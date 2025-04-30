@@ -9,12 +9,23 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        initial={{ opacity: 0, y: 5 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 5 }}
-        transition={{ duration: 0.4 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        {children}
+        <motion.div
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 100, 
+            damping: 20,
+            delay: 0.2 
+          }}
+        >
+          {children}
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} Your Name. All rights reserved.
+              © {currentYear} IJAS A H. All rights reserved.
             </p>
           </div>
           
@@ -35,10 +35,10 @@ const Footer = () => {
                 </li>
                 <li>
                   <a 
-                    href="#blog" 
+                    href="#achievements" 
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Blog
+                    Achievements
                   </a>
                 </li>
                 <li>
