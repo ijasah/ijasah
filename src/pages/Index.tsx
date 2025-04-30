@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/PageTransition";
 import AchievementsSection from "@/components/AchievementsSection";
+import StorySection from "@/components/StorySection";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         <AboutSection />
+        <StorySection />
         <ProjectsSection />
         <AchievementsSection />
         <ContactSection />
