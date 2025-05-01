@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Publications from "@/components/Publications";
 import SkillBar from "@/components/SkillBar";
 import { Briefcase, Award, Star, FileText } from "lucide-react";
+import PageTransition from "@/components/PageTransition";
 
 const experiences = [
   {
@@ -97,134 +98,136 @@ const Experience = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <Navbar />
-      
-      <main>
-        <section className="pt-32 pb-16 relative overflow-hidden">
-          <div className="section-container">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center mb-12"
-            >
-              <h1 className="text-4xl font-bold mb-4">Professional Experience</h1>
-              <p className="text-muted-foreground">
-                My journey as a Data Scientist and AI Engineer, working across multiple sectors and technologies.
-              </p>
-            </motion.div>
-            
-            <div className="flex items-center gap-2 mb-8">
-              <Briefcase className="h-5 w-5 text-primary" />
-              <h2 className="text-2xl font-semibold">Work History</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-6">
-              {experiences.map((exp, index) => (
-                <ExperienceCard 
-                  key={index}
-                  title={exp.title}
-                  company={exp.company}
-                  period={exp.period}
-                  description={exp.description}
-                  index={index}
-                />
-              ))}
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
-              <div>
-                <div className="flex items-center gap-2 mb-6">
-                  <Star className="h-5 w-5 text-primary" />
-                  <h2 className="text-2xl font-semibold">Technical Skills</h2>
+    <PageTransition>
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+        <Navbar />
+        
+        <main>
+          <section className="pt-32 pb-24 relative overflow-hidden">
+            <div className="section-container">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="max-w-3xl mx-auto text-center mb-16"
+              >
+                <h1 className="text-4xl font-bold mb-4">Professional Experience</h1>
+                <p className="text-muted-foreground">
+                  My journey as a Data Scientist and AI Engineer, working across multiple sectors and technologies.
+                </p>
+              </motion.div>
+              
+              <div className="flex items-center gap-2 mb-8">
+                <Briefcase className="h-5 w-5 text-primary" />
+                <h2 className="text-2xl font-semibold">Work History</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-6">
+                {experiences.map((exp, index) => (
+                  <ExperienceCard 
+                    key={index}
+                    title={exp.title}
+                    company={exp.company}
+                    period={exp.period}
+                    description={exp.description}
+                    index={index}
+                  />
+                ))}
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
+                <div>
+                  <div className="flex items-center gap-2 mb-6">
+                    <Star className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-semibold">Technical Skills</h2>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    {skills.map((skill, index) => (
+                      <SkillBar 
+                        key={skill.name}
+                        name={skill.name}
+                        percentage={skill.percentage}
+                        delay={index * 100}
+                      />
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="space-y-6">
-                  {skills.map((skill, index) => (
-                    <SkillBar 
-                      key={skill.name}
-                      name={skill.name}
-                      percentage={skill.percentage}
-                      delay={index * 100}
-                    />
-                  ))}
+                <div>
+                  <div className="flex items-center gap-2 mb-6">
+                    <FileText className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-semibold">Certifications</h2>
+                  </div>
+                  
+                  <motion.ul
+                    className="space-y-2 mb-10"
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                  >
+                    {certifications.map((cert, index) => (
+                      <motion.li 
+                        key={index}
+                        className="flex items-start gap-2"
+                        variants={item}
+                      >
+                        <span className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center text-xs shrink-0 mt-0.5">
+                          ✓
+                        </span>
+                        <span className="text-muted-foreground">{cert}</span>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                  
+                  <div className="flex items-center gap-2 mb-6">
+                    <Award className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-semibold">Awards</h2>
+                  </div>
+                  
+                  <motion.ul
+                    className="space-y-2"
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                  >
+                    {awards.map((award, index) => (
+                      <motion.li 
+                        key={index}
+                        className="flex items-start gap-2"
+                        variants={item}
+                      >
+                        <span className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center text-xs shrink-0 mt-0.5">
+                          ★
+                        </span>
+                        <span className="text-muted-foreground">{award}</span>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
                 </div>
               </div>
               
-              <div>
-                <div className="flex items-center gap-2 mb-6">
-                  <FileText className="h-5 w-5 text-primary" />
-                  <h2 className="text-2xl font-semibold">Certifications</h2>
-                </div>
-                
-                <motion.ul
-                  className="space-y-2 mb-10"
-                  variants={container}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                >
-                  {certifications.map((cert, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-start gap-2"
-                      variants={item}
-                    >
-                      <span className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        ✓
-                      </span>
-                      <span className="text-muted-foreground">{cert}</span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-                
-                <div className="flex items-center gap-2 mb-6">
-                  <Award className="h-5 w-5 text-primary" />
-                  <h2 className="text-2xl font-semibold">Awards</h2>
-                </div>
-                
-                <motion.ul
-                  className="space-y-2"
-                  variants={container}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                >
-                  {awards.map((award, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-start gap-2"
-                      variants={item}
-                    >
-                      <span className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        ★
-                      </span>
-                      <span className="text-muted-foreground">{award}</span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
+              <Publications />
             </div>
             
-            <Publications />
-          </div>
-          
-          <div className="absolute -z-10 top-0 right-0 opacity-5">
-            <svg width="800" height="800" viewBox="0 0 200 200">
-              <path
-                fill="currentColor"
-                d="M46.5,-78.3C60.2,-71.6,71.5,-59.5,79.2,-45.6C86.9,-31.7,91,-16,90.4,-0.7C89.8,14.6,84.5,29.3,76.6,42.6C68.7,55.9,58.3,67.8,45.1,74.9C31.9,82.1,15.9,84.4,0.1,84.3C-15.8,84.1,-31.6,81.5,-44.9,73.8C-58.2,66.1,-69,53.4,-76.4,39.1C-83.9,24.8,-87.9,8.9,-85.8,-5.9C-83.7,-20.8,-75.4,-34.6,-65.5,-46.7C-55.6,-58.8,-44,-69.3,-30.8,-76.5C-17.7,-83.7,-2.9,-87.7,11.3,-85.4C25.5,-83.1,50.9,-74.6,46.5,-78.3Z"
-                transform="translate(100 100)"
-              />
-            </svg>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-      <ScrollToTop />
-    </div>
+            <div className="absolute -z-10 top-0 right-0 opacity-5">
+              <svg width="800" height="800" viewBox="0 0 200 200">
+                <path
+                  fill="currentColor"
+                  d="M46.5,-78.3C60.2,-71.6,71.5,-59.5,79.2,-45.6C86.9,-31.7,91,-16,90.4,-0.7C89.8,14.6,84.5,29.3,76.6,42.6C68.7,55.9,58.3,67.8,45.1,74.9C31.9,82.1,15.9,84.4,0.1,84.3C-15.8,84.1,-31.6,81.5,-44.9,73.8C-58.2,66.1,-69,53.4,-76.4,39.1C-83.9,24.8,-87.9,8.9,-85.8,-5.9C-83.7,-20.8,-75.4,-34.6,-65.5,-46.7C-55.6,-58.8,-44,-69.3,-30.8,-76.5C-17.7,-83.7,-2.9,-87.7,11.3,-85.4C25.5,-83.1,50.9,-74.6,46.5,-78.3Z"
+                  transform="translate(100 100)"
+                />
+              </svg>
+            </div>
+          </section>
+        </main>
+        
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </PageTransition>
   );
 };
 

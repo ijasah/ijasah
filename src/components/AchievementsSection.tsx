@@ -2,11 +2,6 @@
 import { motion } from "framer-motion";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { Award, Star, Check, BarChart, TrendingUp } from "lucide-react";
-import {
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-} from "@/components/ui/chart";
 import { Card } from "@/components/ui/card";
 
 const achievements = [
@@ -80,14 +75,14 @@ const skillMetrics = [
 
 const AchievementsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/5" id="achievements">
+    <section className="py-24 bg-gradient-to-b from-background to-secondary/5" id="achievements">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto mb-12 text-center"
+          className="max-w-5xl mx-auto mb-16 text-center"
         >
           <h2 className="section-title mb-4">My Impact & Achievements</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
