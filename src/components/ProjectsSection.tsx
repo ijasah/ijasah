@@ -1,9 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import RevealOnScroll from "./RevealOnScroll";
-import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
@@ -12,8 +10,7 @@ const projects = [
     description: "Production-grade Retrieval-Augmented Generation (RAG) tool deployed on GCP, providing accurate and context-aware responses for user queries.",
     tags: ["Generative AI", "RAG", "Vector DB", "LangChain", "GCP"],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "Achieved 5x productivity improvement and 99.9% uptime",
-    link: "#"
+    achievements: "Achieved 5x productivity improvement and 99.9% uptime"
   },
   {
     id: 2,
@@ -21,8 +18,7 @@ const projects = [
     description: "AI-powered business pitch generator that uses Generative AI to automatically create structured, professional presentations from domain-specific data.",
     tags: ["Generative AI", "RAG", "LangChain", "Agentic Flow"],
     image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "20% reduction in presentation creation time",
-    link: "#"
+    achievements: "20% reduction in presentation creation time"
   },
   {
     id: 3,
@@ -30,8 +26,7 @@ const projects = [
     description: "Digital solution suite for the life insurance industry, leveraging predictive modeling to generate actionable marketing insights and predict user purchasing intent.",
     tags: ["Machine Learning", "Predictive Analytics", "Insurance"],
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "Improved user purchasing intent prediction by 5%",
-    link: "#"
+    achievements: "Improved user purchasing intent prediction by 5%"
   },
   {
     id: 4,
@@ -39,8 +34,7 @@ const projects = [
     description: "A software solution that utilizes deep learning (Object detection) to identify damaged parts, evaluate damages and predict possible insurance reimbursement amounts.",
     tags: ["Computer Vision", "Deep Learning", "Object Detection"],
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "Accelerated damage assessment and claim validation",
-    link: "#"
+    achievements: "Accelerated damage assessment and claim validation"
   },
   {
     id: 5,
@@ -48,8 +42,7 @@ const projects = [
     description: "A set of complex neural network architectures designed to fight and prevent adversarial attacks on AI systems.",
     tags: ["Deep Learning", "Security", "Neural Networks"],
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "2x improvement in model resistance to attacks",
-    link: "#"
+    achievements: "2x improvement in model resistance to attacks"
   },
   {
     id: 6,
@@ -57,8 +50,7 @@ const projects = [
     description: "A static analyzer tool based on computer vision that can detect malware with improved accuracy and reduced computational requirements.",
     tags: ["Machine Learning", "Computer Vision", "Security"],
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    achievements: "Published in KES 2021 International Conference",
-    link: "#"
+    achievements: "Published in KES 2021 International Conference"
   }
 ];
 
@@ -125,15 +117,6 @@ const ProjectsSection = () => {
                     {project.achievements}
                   </div>
                 </CardContent>
-                
-                <CardFooter className="p-4 pt-0">
-                  <Button variant="ghost" className="p-0 group" asChild>
-                    <a href={project.link} className="flex items-center gap-1 text-primary/80 hover:text-primary transition-colors">
-                      View Project
-                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-300" />
-                    </a>
-                  </Button>
-                </CardFooter>
               </Card>
             </RevealOnScroll>
           ))}
