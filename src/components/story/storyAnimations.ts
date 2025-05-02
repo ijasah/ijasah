@@ -42,7 +42,7 @@ export const pulseAnimation = {
     transition: {
       duration: 2,
       repeat: Infinity,
-      repeatType: "reverse"
+      repeatType: "reverse" // Changed from string to literal "reverse"
     }
   }
 };
@@ -54,7 +54,7 @@ export const floatAnimation = {
     transition: {
       duration: 3,
       repeat: Infinity,
-      repeatType: "reverse",
+      repeatType: "reverse", // Changed from string to literal "reverse"
       ease: "easeInOut"
     }
   }
