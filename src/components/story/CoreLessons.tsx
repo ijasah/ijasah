@@ -1,17 +1,7 @@
 
 import { motion } from "framer-motion";
-import { Code } from "lucide-react";
-import { fadeIn } from "./storyAnimations";
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
+import { Code, CheckSquare } from "lucide-react";
+import { fadeIn, staggerContainer } from "./storyAnimations";
 
 const CoreLessons = () => {
   return (
@@ -27,7 +17,23 @@ const CoreLessons = () => {
         <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
           <Code className="h-8 w-8 text-primary" />
         </div>
-        <h3 className="text-2xl font-bold">Core Lessons</h3>
+        <h3 className="text-2xl font-bold">Core Lessons & Career Aspirations</h3>
+      </div>
+      
+      <div className="mb-6">
+        <h4 className="text-lg font-medium flex items-center gap-2 mb-3">
+          <CheckSquare className="h-4 w-4 text-primary" /> Career Aspirations & Goals
+        </h4>
+        <p className="text-muted-foreground mb-3">
+          By the end of my B.Tech, I knew I wanted to immerse myself in data science, AI, and research. My aim was to 
+          solve real-world problems through experimentation. After gaining industry experience and completing my M.Tech 
+          with a 9.9 GPA, my vision is now clearer.
+        </p>
+        <p className="text-muted-foreground">
+          I aim to be a top-tier contributor in AI development—someone who not only designs systems but also makes them explainable 
+          and ethical. With five years of experience behind me and my M.Tech now complete, I'm ready to stretch beyond regional 
+          confines and tackle global challenges at an AI-first, innovation-driven company.
+        </p>
       </div>
       
       <motion.div 

@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
-import { fadeIn } from "./storyAnimations";
+import { GraduationCap, BookOpen, School } from "lucide-react";
+import { fadeIn, pulseAnimation } from "./storyAnimations";
 
 const EducationalBackground = () => {
   return (
@@ -22,44 +22,69 @@ const EducationalBackground = () => {
       
       <div className="relative pl-8 border-l-2 border-primary/30 mb-6">
         <div className="absolute -left-1.5 top-0 h-3 w-3 rounded-full bg-primary"></div>
-        <h4 className="text-lg font-medium">Why SCMS and IIIT?</h4>
+        <div className="flex items-center mb-2">
+          <School className="h-4 w-4 text-primary mr-2" />
+          <h4 className="text-lg font-medium">SCMS School of Engineering</h4>
+        </div>
+        <div className="flex flex-wrap text-sm text-muted-foreground mb-2">
+          <span className="mr-4">B.Tech, Computer Science (2015-2019)</span>
+          <span>GPA: 8.25/10</span>
+        </div>
         <p className="mt-2 text-muted-foreground">
-          I chose SCMS School of Engineering for my B.Tech in Computer Science through the government allocation process. 
+          I chose SCMS through the government allocation process, considering other options like Rajagiri and FISAT. 
           Its disciplined academic environment, strict anti-ragging policies, and well-structured curriculum under APJ Abdul 
           Kalam Technological University proved to be the perfect environment for my growth.
         </p>
         <p className="mt-2 text-muted-foreground">
-          Under Dr. Vinod P's mentorship, I worked on Adversarial Machine Learning research, published at the KES International 
-          Conference. After graduating, I continued my education with an M.Tech at IIIT, focusing on Explainable AI and Generative AI.
+          Even during my B.Tech, I had a deep passion for AI and Data Science, seizing every opportunity to work on small 
+          research projects. Under Dr. Vinod P's mentorship, I worked on Adversarial Machine Learning research, which was 
+          later published at the KES International Conference.
         </p>
       </div>
       
       <div className="relative pl-8 border-l-2 border-primary/30 mb-6">
         <div className="absolute -left-1.5 top-0 h-3 w-3 rounded-full bg-primary"></div>
-        <h4 className="text-lg font-medium">College Life: Highs and Lows</h4>
-        <p className="mt-2 text-muted-foreground">
-          My undergraduate years weren't about chasing grades. I ended with an 8.25 GPA, but what really mattered 
-          was the dozens of projects I poured myself into—from hackathons to fab-lab prototypes—and the 
-          friendships I forged.
-        </p>
-        <p className="mt-2 text-muted-foreground">
-          My best times? Late-night coding sprints with a close circle of friends, spirited movie debates 
-          in the common room, and the thrill of seeing a project come to life.
-        </p>
+        <div className="flex items-center mb-2">
+          <BookOpen className="h-4 w-4 text-primary mr-2" />
+          <h4 className="text-lg font-medium">Indian Institute of Information Technology</h4>
+        </div>
+        <div className="flex flex-wrap text-sm text-muted-foreground mb-2">
+          <span className="mr-4">M.Tech, AI and Data Science (2022-2024)</span>
+          <span>GPA: 9.9/10</span>
+        </div>
+        <motion.div 
+          className="mt-2 text-muted-foreground"
+          variants={pulseAnimation}
+          initial="initial"
+          animate="animate"
+        >
+          <p>
+            After gaining industry experience at Infosys and realizing the need for deeper specialization, I pursued an M.Tech at IIIT.
+            I chose IIIT for its strong AI curriculum, research-driven approach, and industry collaborations.
+          </p>
+          <p className="mt-2">
+            At IIIT, I focused on Explainable AI (XAI) and Generative AI. My research examined the limitations of 
+            existing explainability techniques like LIME and SHAP, and I developed a novel RAG-based explainability approach
+            for analyzing model deviations in LLMs like LLAMA and Mistral.
+          </p>
+        </motion.div>
       </div>
       
       <div className="relative pl-8 border-l-2 border-primary/30">
         <div className="absolute -left-1.5 top-0 h-3 w-3 rounded-full bg-primary"></div>
-        <h4 className="text-lg font-medium">Mentorship & Research</h4>
+        <h4 className="text-lg font-medium">College Life: Highs and Lows</h4>
         <p className="mt-2 text-muted-foreground">
-          Dr. Vinod P, Head of Department and a wizard in Cybersecurity and AI became my mentor. His 
-          machine-learning lectures were so engaging that I never missed one—and soon I was in his office, 
-          co-researching adversarial machine learning and evaluating Android malware detectors against 
-          adversarial examples.
+          My undergraduate years weren't about chasing grades. I prioritized self-learning, hands-on projects, and 
+          research-driven exploration. I developed a mind-controlled keyboard for paralyzed individuals using an EEG device in our fab lab.
         </p>
         <p className="mt-2 text-muted-foreground">
-          That work culminated in a paper at the KES International Conference, cementing my belief that 
-          AI research could change lives.
+          My best times? Finding close friends who supported me, late-night coding sprints, and discovering my passion for AI. 
+          The worst times? Facing criticism and mockery when pitching ideas that seemed premature to classmates. Each laugh only 
+          fueled my persistence, and when those "crazy" ideas finally worked, it was a powerful lesson in resilience.
+        </p>
+        <p className="mt-2 text-muted-foreground">
+          At IIIT, I enjoyed working alongside professionals from various industries, but juggling full-time work and part-time
+          studies required significant personal sacrifices. Despite the challenges, the experience was invaluable for my growth.
         </p>
       </div>
     </motion.div>

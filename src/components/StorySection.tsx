@@ -16,15 +16,32 @@ const StorySection = () => {
       />
       
       <div className="section-container">
-        <motion.h2 
-          className="section-title text-center mb-16"
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          My Journey
-        </motion.h2>
+          <motion.h2 
+            className="section-title mb-3"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            My Journey
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            From passion to expertise — the story of my personal and professional development in AI
+          </motion.p>
+        </motion.div>
         
         <div className="max-w-7xl mx-auto">
           <RevealOnScroll threshold={0.1}>
