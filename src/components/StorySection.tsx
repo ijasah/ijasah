@@ -6,7 +6,6 @@ import LeadershipPhilosophy from "./story/LeadershipPhilosophy";
 import ProfessionalJourney from "./story/ProfessionalJourney";
 import CoreLessons from "./story/CoreLessons";
 import WorkHabits from "./story/WorkHabits";
-import SkillsSection from "./story/SkillsSection";
 
 const StorySection = () => {
   return (
@@ -47,17 +46,16 @@ const StorySection = () => {
         <div className="max-w-7xl mx-auto">
           <RevealOnScroll threshold={0.1}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Left Column - Education & Skills */}
+              {/* Left Column - Education & Core Lessons */}
               <div className="space-y-8">
                 <EducationalBackground />
-                <SkillsSection />
+                <CoreLessons />
               </div>
               
-              {/* Right Column - Professional Info */}
+              {/* Right Column - Professional Info & Work Habits */}
               <div className="space-y-8">
                 <ProfessionalJourney />
                 <LeadershipPhilosophy />
-                <CoreLessons />
                 <WorkHabits />
               </div>
             </div>
