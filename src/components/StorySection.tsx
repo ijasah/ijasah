@@ -46,13 +46,13 @@ const StorySection = () => {
         <div className="max-w-7xl mx-auto">
           <RevealOnScroll threshold={0.1}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Left Column - Education & Core Lessons */}
+              {/* Left Column - Rearranged for better balance */}
               <div className="space-y-8">
                 <EducationalBackground />
                 <CoreLessons />
               </div>
               
-              {/* Right Column - Professional Info & Work Habits */}
+              {/* Right Column - Rearranged for better balance */}
               <div className="space-y-8">
                 <ProfessionalJourney />
                 <LeadershipPhilosophy />
