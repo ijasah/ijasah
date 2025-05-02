@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Briefcase, User, Book, Award, Code, Server, Cloud, Database, Terminal, GitBranch, Docker, Api, Laptop } from "lucide-react";
+import { Briefcase, User, Book, Award, Code, Server, Cloud, Database, Terminal } from "lucide-react";
 import RevealOnScroll from "./RevealOnScroll";
 import { motion } from "framer-motion";
 
@@ -70,9 +70,7 @@ const AboutSection = () => {
         { name: "RAG (Retrieval-Augmented Generation)" },
         { name: "Agentic RAG" },
         { name: "Crew AI" },
-        { name: "Embeddings" },
-        { name: "Fine-tuning Open-Source Models" },
-        { name: "Mistral" }
+        { name: "Embeddings" }
       ]
     },
     {
@@ -124,49 +122,13 @@ const AboutSection = () => {
       ]
     },
     {
-      title: "Containerization & DevOps",
-      icon: <Docker className="h-5 w-5 text-primary" />,
-      skills: [
-        { name: "Docker" },
-        { name: "CI/CD Pipelines" },
-        { name: "RESTful API Design" },
-        { name: "Microservices Architecture" },
-        { name: "API Gateways" }
-      ]
-    },
-    {
-      title: "Development Tools",
-      icon: <GitBranch className="h-5 w-5 text-primary" />,
-      skills: [
-        { name: "Git Version Control" },
-        { name: "Jupyter Notebooks" },
-        { name: "VS Code" },
-        { name: "PyCharm" },
-        { name: "DVC (Data Version Control)" }
-      ]
-    },
-    {
-      title: "System Architecture",
-      icon: <Laptop className="h-5 w-5 text-primary" />,
-      skills: [
-        { name: "Microservices" },
-        { name: "Event-Driven Architecture" },
-        { name: "Serverless Computing" },
-        { name: "High-Availability Systems" },
-        { name: "Scalable Infrastructure" }
-      ]
-    },
-    {
       title: "Soft Skills",
       icon: <Terminal className="h-5 w-5 text-primary" />,
       skills: [
         { name: "Cross-functional Team Leadership" },
         { name: "Project Management" },
         { name: "Technical Communication" },
-        { name: "Stakeholder Management" },
-        { name: "Problem Solving" },
-        { name: "Technical Documentation" },
-        { name: "Agile Methodologies" }
+        { name: "Stakeholder Management" }
       ]
     }
   ];
@@ -273,8 +235,53 @@ const AboutSection = () => {
                   </p>
                 </div>
               </div>
-              
-              <div className="mt-8">
+            </div>
+          </RevealOnScroll>
+          
+          <div className="space-y-8">
+            <RevealOnScroll threshold={0.3} delay={100}>
+              <div>
+                <h3 className="text-2xl font-semibold mb-6 relative inline-block">
+                  Technical Skills
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/20"></span>
+                </h3>
+                
+                <div className="flex flex-col space-y-6">
+                  {skillCategories.map((category, categoryIndex) => (
+                    <div 
+                      key={category.title}
+                      className="bg-primary/5 p-4 rounded-lg"
+                    >
+                      <h4 className="text-lg font-medium flex items-center gap-2 mb-3">
+                        {category.icon} {category.title}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill.name}
+                            className="px-3 py-1.5 bg-background rounded-full text-sm flex items-center gap-1"
+                          >
+                            {skill.name}
+                            {skill.level && (
+                              <span className={`ml-1 px-1.5 py-0.5 text-xs rounded ${
+                                skill.level === "Primary" ? "bg-green-500/20 text-green-700" : 
+                                skill.level === "Advanced" ? "bg-blue-500/20 text-blue-700" :
+                                "bg-slate-500/20 text-slate-700"
+                              }`}>
+                                {skill.level}
+                              </span>
+                            )}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </RevealOnScroll>
+            
+            <RevealOnScroll threshold={0.3} delay={200}>
+              <div>
                 <h3 className="text-2xl font-semibold mb-6 relative inline-block">
                   Achievements
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/20"></span>
@@ -297,49 +304,6 @@ const AboutSection = () => {
                     <Award className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <p className="text-muted-foreground text-sm">5-star for problem solving and Python programming on HackerRank</p>
                   </div>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-          
-          <div className="space-y-8">
-            <RevealOnScroll threshold={0.3} delay={100}>
-              <div>
-                <h3 className="text-2xl font-semibold mb-6 relative inline-block">
-                  Technical Skills
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/20"></span>
-                </h3>
-                
-                <div className="flex flex-col space-y-4 max-h-[600px] overflow-y-auto pr-2">
-                  {skillCategories.map((category, categoryIndex) => (
-                    <div 
-                      key={category.title}
-                      className="bg-primary/5 p-4 rounded-lg hover:bg-primary/10 transition-colors duration-300"
-                    >
-                      <h4 className="text-lg font-medium flex items-center gap-2 mb-3">
-                        {category.icon} {category.title}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill.name}
-                            className="px-3 py-1.5 bg-background rounded-full text-sm flex items-center gap-1 hover:shadow-sm transition-all"
-                          >
-                            {skill.name}
-                            {skill.level && (
-                              <span className={`ml-1 px-1.5 py-0.5 text-xs rounded ${
-                                skill.level === "Primary" ? "bg-green-500/20 text-green-700" : 
-                                skill.level === "Advanced" ? "bg-blue-500/20 text-blue-700" :
-                                "bg-slate-500/20 text-slate-700"
-                              }`}>
-                                {skill.level}
-                              </span>
-                            )}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </RevealOnScroll>
