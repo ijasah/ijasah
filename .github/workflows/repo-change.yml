@@ -17,21 +17,20 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Check if token is set
+      - name: Debug and Push
+        env:
+          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          # Debug token presence (safely)
           if [ -z "${TARGET_REPO_TOKEN}" ]; then
             echo "TOKEN NOT SET"
             exit 1
           else
-            echo "TOKEN IS SET"
+            echo "Token length: ${#TARGET_REPO_TOKEN}"
           fi
-        env:
-          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
-
-      - name: Push to external repo
-        env:
-          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
-        run: |
-          git remote remove external || true
-          git remote add external https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git
-          git push --force external HEAD:main
+          
+          # Set remote URL with authentication
+          git remote set-url origin "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
+          
+          # Push to target repo
+          git push --force origin HEAD:main
