@@ -24,7 +24,7 @@ jobs:
             echo "❌ TARGET_REPO_TOKEN is missing!"
             exit 1
           else
-            echo "✅ TARGET_REPO_TOKEN is set."
+            echo "✅ TARGET_REPO_TOKEN is sett"
           fi
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
