@@ -1,6 +1,6 @@
 # Simple workflow for deploying static content to GitHub Pages.
 name: Deploy static site to Pages
-# donee
+# done.
 on:
   push:
     branches:
@@ -37,7 +37,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-  # ndjnvjd
   deploy:
     needs: build
     runs-on: ubuntu-latest
