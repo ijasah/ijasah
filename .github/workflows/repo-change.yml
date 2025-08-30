@@ -12,12 +12,16 @@ jobs:
       - name: Checkout source repo
         uses: actions/checkout@v4
 
+      - name: Make a local change
+        run: |
+          echo "Automated update on $(date)" > automated-update.txt
+          
       - name: Set up Git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Debug and Push
+      - name: Commit and push to external repo
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
@@ -31,6 +35,10 @@ jobs:
           
           # Set remote URL with authentication
           git remote set-url origin "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
+          
+          # Stage and commit changes
+          git add automated-update.txt
+          git commit -m "Automated file update [skip ci]"
           
           # Push to target repo
           git push --force origin HEAD:main
