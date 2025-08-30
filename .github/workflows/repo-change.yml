@@ -24,7 +24,8 @@ jobs:
             echo "❌ TARGET_REPO_TOKEN is missing!"
             exit 1
           else
-            echo "✅ TARGET_REPO_TOKEN is sett"
+            echo "✅ TARGET_REPO_TOKEN is set."
+            echo "Token prefix: ${TARGET_REPO_TOKEN:0:4}****"
           fi
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
@@ -33,5 +34,6 @@ jobs:
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          git remote remove external || true
           git remote add external https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git
           git push --force external HEAD:main
