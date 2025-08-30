@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
-        # The default GITHUB_TOKEN has read access to the source repo, which is sufficient here.
 
       - name: Make a local change
         run: |
@@ -34,7 +33,7 @@ jobs:
             echo "Token is available."
           fi
           
-          # Add the target repo as a new remote, named 'target'
+          # Add the target repo as a new remote, using the PAT for authentication
           git remote add target "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
           
           # Stage and commit changes
