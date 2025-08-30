@@ -14,8 +14,8 @@ jobs:
 
       - name: Set up Git user
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "ijasah"
+          git config --global user.email "ijas.ah96@gmail.com"
 
       - name: Push to external repo
         env:
