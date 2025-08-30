@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
+        # The default GITHUB_TOKEN has read access to the source repo, which is sufficient here.
 
       - name: Make a local change
         run: |
@@ -25,20 +26,20 @@ jobs:
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          # Debug token presence (safely)
+          # Verify the token is available in the environment
           if [ -z "${TARGET_REPO_TOKEN}" ]; then
-            echo "TOKEN NOT SET"
+            echo "::error::TARGET_REPO_TOKEN secret is not set."
             exit 1
           else
-            echo "Token length: ${#TARGET_REPO_TOKEN}"
+            echo "Token is available."
           fi
           
-          # Set remote URL with authentication
-          git remote set-url origin "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
+          # Add the target repo as a new remote, named 'target'
+          git remote add target "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
           
           # Stage and commit changes
           git add automated-update.txt
           git commit -m "Automated file update [skip ci]"
           
-          # Push to target repo
-          git push --force origin HEAD:main
+          # Push to the target remote, not the default 'origin'
+          git push --force target HEAD:main
