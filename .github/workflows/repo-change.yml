@@ -12,7 +12,7 @@ jobs:
       - name: Checkout source repo
         uses: actions/checkout@v4
 
-      - name: Make a local changee
+      - name: Make a local change
         run: |
           echo "Automated update on $(date)" > automated-update.txt
           
