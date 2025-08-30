@@ -8,6 +8,7 @@ on:
 jobs:
   push-to-external-repo:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
@@ -16,6 +17,17 @@ jobs:
         run: |
           git config --global user.name "ijasah"
           git config --global user.email "ijas.ah96@gmail.com"
+
+      - name: Debug token availability
+        run: |
+          if [ -z "$TARGET_REPO_TOKEN" ]; then
+            echo "❌ TARGET_REPO_TOKEN is missing!"
+            exit 1
+          else
+            echo "✅ TARGET_REPO_TOKEN is set."
+          fi
+        env:
+          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
 
       - name: Push to external repo
         env:
