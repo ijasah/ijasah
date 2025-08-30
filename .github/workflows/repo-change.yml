@@ -21,5 +21,6 @@ jobs:
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
+          git remote remove external || true
           git remote add external https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git
           git push --force external HEAD:main
