@@ -19,7 +19,7 @@ jobs:
 
       - name: Push to external repo
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
           git remote add external https://x-access-token:${GITHUB_TOKEN}@github.com/ijasah/home.git
           git push --force external
