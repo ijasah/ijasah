@@ -3,7 +3,8 @@ name: Deploy static site to Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - work_flow_home
 
 permissions:
   contents: read
