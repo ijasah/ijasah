@@ -11,24 +11,30 @@ jobs:
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
+        with:
+          repository: ijasah/subtle-folio-toggle # Replace with your source repo
+          ref: work_flow_home # Replace with your branch
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
+
+      - name: Make a local change
+        run: |
+          echo "Automated update on $(date)" > automated-update.txt
 
       - name: Set up Git user
         run: |
-          git config --global user.name "ijasah"
-          git config --global user.email "ijas.ah96@gmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Push to external repo
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          # Remove old remote if exists
-          git remote remove external || true
+          # Set remote URL with authentication
+          git remote set-url origin "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
 
-          # Add new remote using PAT
-          git remote add external https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git
+          # Stage and commit changes
+          git add automated-update.txt
+          git commit -m "Automated file update [skip ci]"
 
-          # Debug: show remote URL (token masked automatically)
-          git remote -v
-
-          # Push branch
-          git push --force external HEAD:main
+          # Push to target repo
+          git push --force origin HEAD:main
