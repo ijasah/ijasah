@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v4
+        with:
+          repository: ijasah/subtle-folio-toggle # Replace with your source repo
+          ref: work_flow_home # Replace with your branch
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
 
       - name: Make a local change
         run: |
@@ -25,18 +29,6 @@ jobs:
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          # Verify the token is available in the environment
-          if [ -z "${TARGET_REPO_TOKEN}" ]; then
-            echo "::error::TARGET_REPO_TOKEN secret is not set."
-            exit 1
-          else
-            echo "Token is available."
-          fi
-
-          # Clean the local repository
-          git gc --prune=now
-          git prune
-
           # Set remote URL with authentication
           git remote set-url origin "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git"
 
@@ -44,5 +36,5 @@ jobs:
           git add automated-update.txt
           git commit -m "Automated file update [skip ci]"
 
-          # Push to target repo with explicit command
-          git push --force "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git" HEAD:main
+          # Push to target repo
+          git push --force origin HEAD:main
