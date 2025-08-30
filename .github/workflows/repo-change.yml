@@ -12,33 +12,15 @@ jobs:
       - name: Checkout source repo
         uses: actions/checkout@v4
 
-      - name: Set up Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Debug token presence
+      - name: Configure Git credentials
         env:
           TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          if [ -z "${TARGET_REPO_TOKEN}" ]; then
-            echo "TOKEN NOT SET"
-            exit 1
-          else
-            echo "TOKEN IS SET"
-            # Debug remote URL (masked)
-            echo "Will push to: https://x-access-token:***@github.com/ijasah/home.git"
-          fi
+          git config --global credential.helper store
+          echo "https://x-access-token:${TARGET_REPO_TOKEN}@github.com" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
 
       - name: Push to external repo
-        env:
-          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          # Try direct push without remote
-          echo "Attempting direct push..."
-          git push --force "https://x-access-token:${TARGET_REPO_TOKEN}@github.com/ijasah/home.git" HEAD:main || {
-            echo "Direct push failed, checking token format..."
-            # Print token length (safe debugging)
-            echo "Token length: ${#TARGET_REPO_TOKEN}"
-            exit 1
-          }
+          echo "Attempting push with configured credentials..."
+          git push --force "https://github.com/ijasah/home.git" HEAD:main
